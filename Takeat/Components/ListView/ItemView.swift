@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ItemView: View {
-    @EnvironmentObject var viewModel: ListViewModel
+    var viewModel: ListViewModel
     var item: Item
     
     var body: some View {
@@ -62,7 +62,7 @@ struct ItemView: View {
                 Button {
                     viewModel.addToCart(item: item)
                 } label: {
-                    Image(systemName: "plus")
+                    Image(systemName: item.isAdded ? "checkmark" : "plus")
                         .padding(10)
                         .foregroundColor(.white)
                         .background(Color("styleGreen").opacity(0.8))
@@ -79,8 +79,8 @@ struct ItemView: View {
     }
 }
 
-struct ItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        ItemView(item: itemList[4])
-    }
-}
+//struct ItemView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ItemView(item: viewModel.items[4])
+//    }
+//}

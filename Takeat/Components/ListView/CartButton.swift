@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct CartButton: View {
-    var numberOfProducts: Int
+    @EnvironmentObject var viewModel: ListViewModel
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
             Image(systemName: "cart")
                 .foregroundColor(Color("styleGreen"))
                 .padding(.top, 5)
-            if numberOfProducts > 0 {
-                Text("\(numberOfProducts)")
+            if viewModel.cartItems.count > 0 {
+                Text("\(viewModel.cartItems.count)")
                     .font(.caption2)
                     .bold()
                     .foregroundColor(.white)
@@ -25,11 +25,5 @@ struct CartButton: View {
                     .cornerRadius(50)
             }
         }
-    }
-}
-
-struct CartButton_Previews: PreviewProvider {
-    static var previews: some View {
-        CartButton(numberOfProducts: 1)
     }
 }
